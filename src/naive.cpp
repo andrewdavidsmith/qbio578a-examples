@@ -37,25 +37,6 @@ using std::string;
 using std::cout;
 using std::endl;
 
-
-/* This is a pretty slow (for C++), but clear and clean way to read a
-   FASTA format file, assuming it has only one sequence that might
-   span multiple lines. In general FASTA format can have many
-   sequences, and if that were the case, this function would not work.
- */
-static void
-read_fasta_file_single_sequence(const string &filename, string &T) {
-
-  std::ifstream in(filename);
-  if (!in)
-    return; // this should be checked as an error
-
-  string line;
-  in >> line;
-  while (in >> line)
-    T += line;
-}
-
 int main(int argc, const char * const argv[]) {
 
   if (argc != 3) {
@@ -64,11 +45,7 @@ int main(int argc, const char * const argv[]) {
   }
 
   const string P(argv[1]);
-  const string filename(argv[2]);
-
-  // read the text from the specified file
-  string T;
-  read_fasta_file_single_sequence(filename, T);
+  const string T(argv[2]);
 
   const size_t m = T.length();
   const size_t n = P.length();
@@ -83,10 +60,16 @@ int main(int argc, const char * const argv[]) {
       matches.push_back(i);
   }
 
+  // the "stream" `cout` and the stream insertion operator `<<` below
+  // tend to be much slower than direct file output and formatting a
+  // string without using the `<<`. On the other hand, we try to avoid
+  // I/O if we want fast code anyway.
+
   // for (size_t i = 0; i < matches.size(); ++i)
   //   cout << matches[i] << endl;
 
   cout << "n_matches=" << matches.size() << endl;
+  cout << "capacity=" << matches.capacity() << endl;
 
   return EXIT_SUCCESS;
 }
