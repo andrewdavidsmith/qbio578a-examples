@@ -95,15 +95,16 @@ int main(const int argc, char *const argv[]) {
       j++;
     if (j == n) {
       matches[n_matches] = i;
-      n_matches++;
       // if there is no room left in the matches array, grow it!
       if (n_matches == capacity)
         matches = grow_matches_array(n_matches, matches, &capacity);
+      n_matches++;
     }
   }
 
   /* for (i = 0; i < n_matches; ++i) */
   /*   printf("%d\n", matches[i]); */
+
   printf("n_matches=%d\n", n_matches);
   printf("capacity=%d\n", capacity);
 
