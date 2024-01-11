@@ -34,6 +34,8 @@
 
 int *
 grow_matches_array(const int n_matches, int *const matches, int *capacity) {
+  // could be done with realloc instead of malloc but this shows a bit
+  // more of what is happening
   int *tmp;
   int i;
 
