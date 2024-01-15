@@ -1,6 +1,6 @@
 /* kmp: A C++ implementation of the Knuth-Morris-Pratt algorithm
  *
- * Copyright (C) 2023 Andrew D. Smith
+ * Copyright (C) 2024 Andrew D. Smith
  *
  * Author: Andrew D. Smith
  *
@@ -18,6 +18,14 @@
 // This code is just for illustration. It takes both the "text" and
 // pattern from the command line, which means the text would be
 // extremely small.
+
+// here is an example:
+//
+// $ g++ -o kmp kmp.cpp
+// $ ./kmp ACGTACGA AACCTTAACGTACGACACCAATTATG
+//
+// The "prefix function" is printed for the pattern, and this will be
+// very simple -- likely almost all zeros -- for most short patterns.
 
 #include <iostream>
 #include <string>
