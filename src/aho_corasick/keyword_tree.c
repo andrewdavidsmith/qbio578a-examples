@@ -1,4 +1,4 @@
-/* keyword_tree: An implementation in keyword trees to allow for the
+/* keyword_tree: An implementation of keyword trees to allow for the
  * Aho-Corasick algorithm.
  *
  * Copyright (C) 2024 Andrew D. Smith
