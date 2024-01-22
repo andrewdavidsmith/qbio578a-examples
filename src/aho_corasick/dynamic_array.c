@@ -17,7 +17,7 @@
 
 #include "dynamic_array.h"
 
-#include <stdlib.h>  // for calloc and free
+#include <stdlib.h>
 #include <limits.h>  // for INT_MAX
 
 #ifdef max
@@ -39,7 +39,7 @@ int da_size(const dynamic_array *da) {
 
 
 dynamic_array *da_init(void) {
-  dynamic_array *da = (dynamic_array*)calloc(1, sizeof(dynamic_array));
+  dynamic_array *da = calloc(1, sizeof(dynamic_array));
   da->size = 0;
   da->capacity = 0;
   da->array = NULL;
@@ -57,7 +57,7 @@ void da_free(dynamic_array *da) {
 dynamic_array *da_push(dynamic_array *da, const int val) {
   if (da->size == da->capacity) {
     da->capacity = max(1, 2*da->capacity);
-    da->array = (int*)realloc(da->array, da->capacity*sizeof(int));
+    da->array = realloc(da->array, da->capacity*sizeof(int));
   }
   da->array[da->size] = val;
   da->size++;
