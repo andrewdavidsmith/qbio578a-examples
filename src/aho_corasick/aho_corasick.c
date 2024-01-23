@@ -21,7 +21,7 @@
  *
  * $ cc -o aho_corasick aho_corasick.c keyword_tree.c dynamic_array.c fasta_file.c
  *
- * and it should work with any C compiler with c99.
+ * and it should work with any C compiler with c99 and the POSIX function getline.
  */
 
 #include "fasta_file.h"
