@@ -95,6 +95,7 @@ read_fasta_file(const char *filename, char ***names_out, char ***seqs_out) {
       // copy the current line into the growing sequence
       strncpy(seqs[n_seqs-1] + seq_len, buffer, line_width);
       seq_len += line_width;
+      seqs[n_seqs-1][seq_len] = '\0';  // since realloc won't add '\0'
     }
   }
 
